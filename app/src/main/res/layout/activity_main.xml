@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <!--
+     1.根节点变成了layout,里面包含了data节点和传统的布局
+     2.data节点是连接view和model的桥梁
+     3.data节点声明一个variable变量,值就可以以传到布局文件中来了
+     4.在text属性中使用了@{}
+    -->
+    <data>
+        <variable
+            name="user"
+            type="come.example.qiaowenhao.practicesdatabinding.User"/>
+    </data>
+
+    <android.support.constraint.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context="come.example.qiaowenhao.practicesdatabinding.MainActivity">
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:id="@+id/name"
+            android:layout_marginTop="30dp"
+            android:text="@{user.name}"
+            android:textSize="16sp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:id="@+id/age"
+            android:text="@{String.valueOf(user.age)}"
+            android:layout_marginTop="20dp"
+            android:textSize="16sp"
+            android:gravity="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/name"/>
+
+
+    </android.support.constraint.ConstraintLayout>
+</layout>
+
